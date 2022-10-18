@@ -14,7 +14,7 @@ module RailsPerformance
         app.middleware.insert_after ActionDispatch::Executor, RailsPerformance::Rails::Middleware
       else
         begin
-          app.middleware.insert_after ActionDispatch::Static, RailsPerformance::Rails::Middleware
+          app.middleware.insert_after ActionDispatch::ParamsParser, RailsPerformance::Rails::Middleware
         rescue
           app.middleware.insert_after Rack::SendFile, RailsPerformance::Rails::Middleware
         end
